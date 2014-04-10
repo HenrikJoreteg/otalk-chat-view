@@ -67,13 +67,14 @@ A `Message` model is assumed to provide:
 In addition, these fields will enable more advanced display options if supported
 by the `Message` model:
 
-- `.mine`
+- `.isMine`
 - `.pendingAck`
 - `.delayed`
 - `.edited`
 - `.pendingReceipt`
 - `.receiptReceived`
 - `.meAction`
+- `.errorCondition`
 
 ## License
 

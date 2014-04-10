@@ -1,6 +1,6 @@
 {
   "name": "otalk-chat-view",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "author": "Lance Stout <lance@andyet.net>",
   "dependencies": {
     "underscore": "^1.6.0",

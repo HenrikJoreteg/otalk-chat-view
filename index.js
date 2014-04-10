@@ -198,19 +198,28 @@ module.exports = function (BaseView, options) {
         chatHTML: function (msg, useExistingGroup) {
             var classes = [];
 
-            if (msg.mine) classes.push('mine');
+            if (msg.isMine) classes.push('mine');
             if (msg.pendingAck) classes.push('pendingAck');
             if (msg.delayed) classes.push('delayed');
             if (msg.edited) classes.push('edited');
             if (msg.pendingReceipt) classes.push('pendingReceipt');
             if (msg.receiptReceived) classes.push('delivered');
             if (msg.meAction) classes.push('meAction');
+            if (msg.errorCondition) classes.push('error');
 
 
             if (useExistingGroup) {
-                return templates.chat({message: msg, classList: classes});
+                return templates.chat({
+                    contact: this.model,
+                    message: msg,
+                    classList: classes
+                });
             } else {
-                return templates.chatGroup({message: msg, classList: classes});
+                return templates.chatGroup({
+                    contact: this.model,
+                    message: msg,
+                    classList: classes
+                });
             }
         },
 

@@ -1,0 +1,24 @@
+{
+  "name": "otalk-chat-view",
+  "version": "0.0.1",
+  "author": "Lance Stout <lance@andyet.net>",
+  "dependencies": {
+    "underscore": "^1.6.0",
+    "ampersand-state": "^1.0.0",
+    "ampersand-view": "^2.3.0",
+    "staydown": "^1.2.0",
+    "domify": "^1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^3.0.0",
+    "grunt": "^0.4.2",
+    "grunt-browserify": "^1.2.0",
+    "grunt-contrib-jshint": "^0.7.2",
+    "grunt-contrib-uglify": "^0.2.7",
+    "precommit-hook": "^0.4.0",
+    "tape": "^2.3.0",
+    "uglify-js": "^2.3.6"
+  },
+  "license": "MIT",
+  "main": "./index.js"
+}

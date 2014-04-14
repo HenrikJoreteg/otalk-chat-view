@@ -52,7 +52,7 @@ module.exports = function (BaseView, options) {
                 e.preventDefault();
             } else if (e.which === 38 && this.$chatInput.value === '' && this.model.lastSentMessageID) {
                 this.state.editing = true;
-                var prev = this.model.messages.find(this.model.lastSentMessageID);
+                var prev = this.model.messages.find(this.model.lastSentMessageID, true);
                 if (prev) {
                     this.$chatInput.value = prev.body;
                 } else {
@@ -147,20 +147,28 @@ module.exports = function (BaseView, options) {
         },
 
         refreshModel: function (model) {
+            if (!this.rendered) return;
             var existing = this.get('#chat-' + model.cid);
             var refreshed = domify(this.chatHTML(model, true));
             existing.parentElement.replaceChild(refreshed, existing);
         },
 
         appendModel: function (model, preload) {
+            if (!this.rendered) return;
+            if (model === this.lastModel) return;
+
             var self = this;
             var useExistingGroup = this.chatShouldGroupWith(model, this.lastModel);
             var newEl, first, last, items;
 
+            if (useExistingGroup) {
+                items = this.$messageList.getElementsByTagName('li');
+                useExistingGroup = items.length > 0;
+            }
+
             newEl = domify(this.chatHTML(model, useExistingGroup));
 
             if (useExistingGroup) {
-                items = this.$messageList.getElementsByTagName('li');
                 last = items[items.length - 1];
                 last.getElementsByClassName('messageWrapper')[0].appendChild(newEl);
                 this.staydown.checkdown();
@@ -180,7 +188,7 @@ module.exports = function (BaseView, options) {
             var maxHeight = 102;
 
             this.$chatInput.removeAttribute('style');
-            height = this.$chatInput.clientHeight;
+            height = this.$chatInput.clientHeight || 30;
             scrollHeight = this.$chatInput.scrollHeight;
             newHeight = scrollHeight + 2;
 
@@ -203,7 +211,7 @@ module.exports = function (BaseView, options) {
             if (msg.delayed) classes.push('delayed');
             if (msg.edited) classes.push('edited');
             if (msg.pendingReceipt) classes.push('pendingReceipt');
-            if (msg.receiptReceived) classes.push('delivered');
+            if (msg.receiptReceived) classes.push('receiptReceived');
             if (msg.meAction) classes.push('meAction');
             if (msg.errorCondition) classes.push('error');
 

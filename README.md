@@ -64,18 +64,6 @@ A `Message` model is assumed to provide:
 - `.fromFullJID`
 - `.fromBareJID`
 
-In addition, these fields will enable more advanced display options if supported
-by the `Message` model:
-
-- `.isMine`
-- `.pendingAck`
-- `.delayed`
-- `.edited`
-- `.pendingReceipt`
-- `.receiptReceived`
-- `.meAction`
-- `.errorCondition`
-
 ## License
 
 MIT

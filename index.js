@@ -132,9 +132,7 @@ module.exports = function (BaseView, options) {
             var self = this;
 
             // Empty out the messages container
-            while (this.$messageList.firstChild) {
-                this.$messageList.removeChild(this.$messageList.firstChild);
-            }
+            this.$messageList.innerHTML = '';
 
             this.model.messages.each(function (model, i) {
                 self.appendModel(model);
@@ -204,29 +202,15 @@ module.exports = function (BaseView, options) {
         }, 300),
 
         chatHTML: function (msg, useExistingGroup) {
-            var classes = [];
-
-            if (msg.isMine) classes.push('mine');
-            if (msg.pendingAck) classes.push('pendingAck');
-            if (msg.delayed) classes.push('delayed');
-            if (msg.edited) classes.push('edited');
-            if (msg.pendingReceipt) classes.push('pendingReceipt');
-            if (msg.receiptReceived) classes.push('receiptReceived');
-            if (msg.meAction) classes.push('meAction');
-            if (msg.errorCondition) classes.push('error');
-
-
             if (useExistingGroup) {
                 return templates.chat({
                     contact: this.model,
-                    message: msg,
-                    classList: classes
+                    message: msg
                 });
             } else {
                 return templates.chatGroup({
                     contact: this.model,
-                    message: msg,
-                    classList: classes
+                    message: msg
                 });
             }
         },

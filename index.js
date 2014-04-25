@@ -168,7 +168,7 @@ module.exports = function (BaseView, options) {
 
             if (useExistingGroup) {
                 last = items[items.length - 1];
-                last.getElementsByClassName('messageWrapper')[0].appendChild(newEl);
+                last.getElementsByClassName('messages-wrapper')[0].appendChild(newEl);
                 this.staydown.checkdown();
             } else {
                 this.staydown.append(newEl);

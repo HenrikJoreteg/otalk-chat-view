@@ -25,16 +25,39 @@ var ChatPage = createChatView(BasePage, {
 });
 ```
 
-## View Role Assumptions
+## View Markup Assumptions
 
-- `chat-input`
+- `chat-input` role
 
-    A `<div/>` that also contains a `<textarea />` element inside it.
+    A `<div/>` or `<form/>` that also contains a `<textarea />` element inside it.
 
-- `message-list`
+- `message-list` role
 
     A `<ul/>` where all chats will be inserted (where each `<li/>` is for a group
     of chats all from the same participant).
+
+- `messages-wrapper` class
+
+    A wrapping `<div/>` inside each chat group `<li/>` where messages will be inserted.
+
+### Sample HTML Layout
+
+```html
+<div>
+  ... your chat view header
+  <ul role="message-list">
+    <li>
+      ... display contact avatar, etc
+      <div class="messages-wrapper">
+        ... individual message items
+      </div>
+    </li>
+  </ul>
+  <form role="chat-input">
+    <textarea></textarea>
+  </form>
+</div>
+```
 
 ## Model Assumptions
 

@@ -1,11 +1,11 @@
 {
   "name": "otalk-chat-view",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Lance Stout <lance@andyet.net>",
   "dependencies": {
     "underscore": "^1.6.0",
-    "ampersand-state": "^1.0.0",
-    "ampersand-view": "^2.3.0",
+    "ampersand-state": "^3.0.0",
+    "ampersand-view": "^4.0.0",
     "staydown": "^1.2.0",
     "domify": "^1.0.0"
   },

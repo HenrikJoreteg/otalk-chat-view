@@ -38,6 +38,14 @@ module.exports = function (BaseView, options) {
             'keyup [role="chat-input"]': 'handleKeyUp'
         },
 
+        bindings: {
+            state: {
+                editing: ['[role="chat-input"]', 'class'],
+                typing: ['[role="chat-input"]', 'class'],
+                paused: ['[role="chat-input"]', 'class']
+            }
+        },
+
         handleActive: function () {
             if (this.state.active) {
                 this.sendChatState('active');
@@ -97,15 +105,7 @@ module.exports = function (BaseView, options) {
 
             var self = this;
 
-            this.rendered = true;
-
-            this.renderAndBind();
-
-            this.registerBindings(this.state, {
-                editing: ['[role="chat-input"]', 'class'],
-                typing: ['[role="chat-input"]', 'class'],
-                paused: ['[role="chat-input"]', 'class']
-            });
+            this.renderWithTemplate();
 
             this.$chatInput = this.get('[role="chat-input"] textarea');
             this.$chatBox = this.get('[role="chat-input"]');
@@ -237,6 +237,10 @@ module.exports = function (BaseView, options) {
             } else {
                 return !!prevMsg && prevMsg.fromBareJID === msg.fromBareJID;
             }
+        },
+
+        sendChatState: function (state) {
+            this.model.sendChatState(state);
         },
 
         sendChat: function () {

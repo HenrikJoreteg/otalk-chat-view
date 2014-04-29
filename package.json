@@ -4,8 +4,8 @@
   "author": "Lance Stout <lance@andyet.net>",
   "dependencies": {
     "underscore": "^1.6.0",
-    "ampersand-state": "^3.0.0",
-    "ampersand-view": "^4.0.0",
+    "ampersand-state": "^4.0.0",
+    "ampersand-view": "^4.0.1",
     "staydown": "^1.2.0",
     "domify": "^1.0.0"
   },
